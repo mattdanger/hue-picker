@@ -20,51 +20,146 @@
 
   <body role="document">
 
-    <!-- Fixed navbar -->
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="/">Hue picker</a>
-        </div>
-        <div id="navbar" class="navbar-collapse collapse">
-          <ul class="nav navbar-nav">
-            <li class="active"><a href="/">Home</a></li>
-          </ul>
-        </div><!--/.nav-collapse -->
-      </div>
-    </nav>
-
     <div class="container theme-showcase" role="main">
-
 
       <div class="page-header">
         <h1>Hue picker</h1>
       </div>
 
+      <!-- Nav tabs -->
+      <ul id="tabs" class="nav nav-tabs" data-tabs="tabs">
+        <li role="presentation" class="active"><a href="#setup" data-toggle="tab">Setup</a></li>
+        <li role="presentation"><a href="#functions" data-toggle="tab">Functions</a></li>
+        <li role="presentation"><a href="#manual" data-toggle="tab">Manual</a></li>
+      </ul>
+      <!-- /Nav tabs -->
 
-      <form>
-      <input type="text" class="color" value="#5367ce" />
+      <div id="my-tab-content" class="tab-content">
 
-      </form>
+        <!-- Setup -->
+        <div class="tab-pane active" id="setup">
 
-      
-      <p>
-        <button type="button" class="btn btn-default pick">Pick color</button>
-        <button type="button" class="btn btn-primary send">Send</button>
-      </p>
+          <h2>Setup</h2>
+
+          <form class="form-horizontal">
+    
+            <div class="form-group">
+              <label for="" class="col-sm-2 control-label">Username / key</label>
+              <div class="col-sm-6">
+                <input type="text" name="username" class="form-control" value="3407f3f35a8fb76c284dba425abcb9e9">
+              </div>
+            </div>
+    
+            <div class="form-group">
+              <label for="" class="col-sm-2 control-label">Host</label>
+              <div class="col-sm-6">
+                <input type="text" name="host" class="form-control" value="http://192.168.1.114">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="col-sm-offset-2 col-sm-10">
+                <button type="button" class="btn btn-primary get-lights">Get Lights</button>
+                <button type="button" class="btn btn-primary get-groups">Get Groups</button>
+              </div>
+            </div>
+          
+
+          </form>
+
+        </div>
+        <!-- /Setup -->
+
+        <!-- Preloaded functions -->
+        <div class="tab-pane" id="functions">
+
+          <h2>Functions</h2>
+
+          <button type="button" id="siren" data-running-text="Running..." class="btn btn-primary" autocomplete="off">
+            Siren
+          </button>
+          <button type="button" id="fader" class="btn btn-primary" data-toggle="button" aria-pressed="false" autocomplete="off">
+            Fade in / out
+          </button>
+
+        </div>
+        <!-- /Preloaded functions -->
+
+        <!-- Manually set color -->
+        <div class="tab-pane" id="manual">
+
+          <h2>Manual</h2>
+
+          <form class="form-horizontal">
+    
+            <div class="form-group">
+              <label for="" class="col-sm-2 control-label">Hue</label>
+              <div class="col-sm-2">
+                <input type="number" name="hue" class="form-control" id="" placeholder="">
+              </div>
+            </div>
+    
+            <div class="form-group">
+              <label for="" class="col-sm-2 control-label">Sat</label>
+              <div class="col-sm-2">
+                <input type="number" name="sat" class="form-control" id="" placeholder="" value="255">
+              </div>
+            </div>
+    
+            <div class="form-group">
+              <label for="" class="col-sm-2 control-label">Bri</label>
+              <div class="col-sm-2">
+                <input type="number" name="bri" class="form-control" id="" placeholder="" value="100">
+              </div>
+            </div>
+
+            <hr>
+
+            <div class="form-group">
+              <label for="" class="col-sm-2 control-label">Gamut X</label>
+              <div class="col-sm-2">
+                <input type="number" name="gamut-x" class="form-control" id="" placeholder="" value="0.214">
+              </div>
+            </div>
+    
+            <div class="form-group">
+              <label for="" class="col-sm-2 control-label">Gamut Y</label>
+              <div class="col-sm-2">
+                <input type="number" name="gamut-y" class="form-control" id="" placeholder="" value="0.709">
+              </div>
+            </div>
+    
+            <hr>
+    
+            <div class="form-group">
+              <label for="" class="col-sm-2 control-label">Color</label>
+              <div class="col-sm-2">
+                <input type="text" name="color" class="form-control color" id="" placeholder="">
+              </div>
+            </div>
+    
+            <div class="form-group">
+              <div class="col-sm-offset-2 col-sm-10">
+                <button type="button" class="btn btn-primary send">Send</button>
+              </div>
+            </div>
+          
+          </form>
+
+        </div>
+        <!-- /Manually set color -->
+
+      </div>
 
 
+      <!-- JSON output -->
       <div class="page-header">
         <h1>Response</h1>
       </div>
-      <div class="well response">
+      <div class="well">
+        <textarea readonly="readonly" rows="10" cols="100%" class="response"></textarea>
       </div>
+      <!-- /JSON output -->
 
 
 
